@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>左侧菜单栏</title>
+    <link   href="css/left.css" rel="stylesheet"></link>
+
+    <script type="text/javascript" src="/webjars/jquery/3.3.1-1/jquery.js"></script>
+    <script type="text/javascript" src="js/left.js"></script>
+</head>
+<body>
+
+<!--左侧菜单开始-->
+<div class="sidebar">
+    <h4>经销商管理系统</h4>
+    <div class="cover">
+        <h2><img class="img-circle" src="img/face.png"/></h2>
+        <b>空气树智能科技（苏州）有限公司</b>
+        <p>超级管理员</p>
+    </div>
+    <ul class="sidenav animated fadeInUp">
+        <li>
+            <a class="withripple" href="">
+                <i class="icon icon-home"></i>
+                <span class="sidespan">首页</span>
+            </a>
+        </li>
+        <li>
+            <a class="withripple hover" href="javascript:;">
+                <i class="icon icon-article"></i>
+                <span class="sidespan">客户管理</span>
+                <i class="iright pull-right">&gt;</i>
+            </a>
+            <ul class="sidebar-dropdown">
+                <li><a href="#" class="withripple" target="myframe" onclick="findState(300)">施工中客户</a></li>
+                <li><a href="add.html" class="withripple" target="myframe">添加客户</a></li>
+                <li><a href="#" class="withripple" target="myframe" onclick="findState(500)">已完成客户</a></li>
+                <li><a href="#" class="withripple" target="myframe" onclick="findState(100)">未施工客户</a></li>
+                <li><a href="#" class="withripple" target="myframe" onclick="findState(0)">所有客户</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="withripple" href="javascript:;">
+                <i class="icon icon-ui"></i>
+                <span class="sidespan">施工设计</span>
+                <i class="iright pull-right">&gt;</i>
+            </a>
+            <ul class="sidebar-dropdown">
+                <li><a href="" class="withripple">正在施工</a></li>
+                <li><a href="" class="withripple">已完成施工</a></li>
+                <li><a href="addplace.html" class="withripple">添加施工场地</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="withripple" href="javascript:;">
+                <i class="icon icon-web"></i>
+                <span class="sidespan">经销商管理</span>
+                <i class="iright pull-right">&gt;</i>
+            </a>
+            <ul class="sidebar-dropdown">
+                <li><a href="merchant.html" class="withripple">经销商列表</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+</body>
+</html>

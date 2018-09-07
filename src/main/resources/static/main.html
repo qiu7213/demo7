@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户</title>
+    <link   href="css/left.css" rel="stylesheet"></link>
+    <link   href="css/main.css" rel="stylesheet"></link>
+    <script type="text/javascript" src="/webjars/jquery/3.3.1-1/jquery.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="sidebar">
+                <h4>经销商管理系统</h4>
+                <div class="cover">
+                    <h2><img class="img-circle" src="img/face.png"/></h2>
+                    <b>空气树智能科技（苏州）有限公司</b>
+                    <p>超级管理员</p>
+                </div>
+                <ul class="sidenav animated fadeInUp">
+                    <!--<li>-->
+                        <!--<a class="withripple" href="">-->
+                            <!--<i class="icon icon-home"></i>-->
+                            <!--<span class="sidespan">首页</span>-->
+                        <!--</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a class="withripple hover" href="javascript:;">-->
+                            <!--<i class="icon icon-article"></i>-->
+                            <!--<span class="sidespan">客户管理</span>-->
+                            <!--<i class="iright pull-right">&gt;</i>-->
+                        <!--</a>-->
+                        <!--<ul class="sidebar-dropdown">-->
+                            <!--<li><a href="#" class="withripple" target="myframe" onclick="findState(300)">施工中客户</a></li>-->
+                            <!--<li><a href="add.html" class="withripple" target="myframe">添加客户</a></li>-->
+                            <!--<li><a href="#" class="withripple" target="myframe" onclick="findState(500)">已完成客户</a></li>-->
+                            <!--<li><a href="#" class="withripple" target="myframe" onclick="findState(100)">未施工客户</a></li>-->
+                            <!--<li><a href="#" class="withripple" target="myframe" onclick="findState(0)">所有客户</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a class="withripple" href="javascript:;">-->
+                            <!--<i class="icon icon-ui"></i>-->
+                            <!--<span class="sidespan">施工设计</span>-->
+                            <!--<i class="iright pull-right">&gt;</i>-->
+                        <!--</a>-->
+                        <!--<ul class="sidebar-dropdown">-->
+                            <!--<li><a href="" class="withripple">正在施工</a></li>-->
+                            <!--<li><a href="" class="withripple">已完成施工</a></li>-->
+                            <!--<li><a href="addplace.html" class="withripple">添加施工场地</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a class="withripple" href="javascript:;">-->
+                            <!--<i class="icon icon-web"></i>-->
+                            <!--<span class="sidespan">经销商管理</span>-->
+                            <!--<i class="iright pull-right">&gt;</i>-->
+                        <!--</a>-->
+                        <!--<ul class="sidebar-dropdown">-->
+                            <!--<li><a href="merchant.html" class="withripple">经销商列表</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+
+                </ul>
+            </div>
+            <!-- 侧边栏 完-->
+
+            <!--         主体部分           -->
+            <div class="main">
+                <div class="main-title">
+                    <ul class="nav navbar-nav navbar-left navbar-side">
+                        <li><a href=""><i class="icon icon-menu"></i></a></li>
+                    </ul>
+                    <a class="signout">退出</a>
+                </div>
+
+               <h2>Setion title</h2>
+                <!-- 显示查询List 【start】-->
+               <div class="table-responsive" id="userListDiv">
+                    <table class="table table-striped table-sm" id="userListTable">
+                        <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>项目名称</th>
+                            <th>施工进度</th>
+                            <th>电话</th>
+                            <th>地址</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+               <div class="table-responsive" id="userList2">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>用户名</th>
+                            <th>项目名称</th>
+                            <th>施工进度</th>
+                            <th>电话</th>
+                            <th>地址</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 显示查询List  【end】-->
+                <!-- 添加用户 【start】-->
+               <div class="table-responsive" id="addUser">
+                   <div class="addinfo">
+
+                       <table class="tablefrom" id="tablefrom">
+                           <form id="addform" method="post">
+                               <tr><td colspan="2" style=" font-family: '微软雅黑 Light ';font-size: 25px;font-weight: 200;text-align: center;">创 建 用 户</td></tr>
+                               <tr>
+                                   <td></td>
+                                   <td><p id="msg"></p></td>
+                               </tr>
+                               <tr>
+                                   <td><span>账&nbsp;&nbsp;户：</span></td>
+                                   <td><input v-model.trim="message" placeholder=" 用户手机号码" name="userName"></td>
+                               </tr>
+                               <tr>
+                                   <td><span>密&nbsp;&nbsp;码：</span></td>
+                                   <td><input v-model.trim="message" placeholder=" 请输入密码" name="password" value="888888"></td>
+                               </tr>
+                               <tr>
+                                   <td><span>用户昵称：</span></td>
+                                   <td><input v-model.trim="message" placeholder=" 昵称" name="name"></td>
+                               </tr>
+                               <tr>
+                                   <td><span>家庭住址：</span></td>
+                                   <td><input v-model="message" placeholder="家庭住址" name="address"></td>
+                               </tr>
+                               <tr>
+                                   <td><span>电&nbsp;&nbsp;话：</span></td>
+                                   <td><input v-model.trim="message" placeholder=" 电话1" name="phone1"></td>
+                               </tr>
+                               <tr>
+                                   <td><span>电&nbsp;&nbsp;话：</span></td>
+                                   <td><input v-model.trim="message" placeholder=" 电话2,没有可不填" name="phone2"></td>
+                               </tr>
+                               <tr>
+                                   <td colspan=2><a href="#nogo" class="regbtn" id="regbtn" onclick="subdata()">提 交</a></td>
+                               </tr>
+
+                               <tr>
+                                   <td colspan=2>
+                               </tr>
+                           </form>
+                       </table>
+
+
+                   </div>
+                </div>
+                <!-- 添加用户  【end】-->
+                <nav>
+                    <a href="/html/">HTML</a> |
+                    <a href="/css/">CSS</a> |
+                </nav>
+
+
+
+                <!--<div style="position: relative;width: 1200px;height:1000px;">-->
+                    <!--<div style="position: absolute;background-color: #9fcdff;width: 400px;height: 50px;z-index: 5;" >空气质量：优   甲醛：0.1   Tvoc:100   pm2.5:15</div>-->
+                    <!--<div  style="position: absolute;width:1024px ;height:768px;z-index: 3">-->
+                        <!--<video  style="width:100%; height:100%; object-fit: fill" width="1024" height="768" controls="controls">-->
+                            <!--<source src="/css/222.mp4" type="video/mp4">-->
+                        <!--</video>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+
+</body>
+<link   href="css/add.css" rel="stylesheet"></link>
+
+</html>

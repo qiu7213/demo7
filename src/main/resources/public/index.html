@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>经销商平台</title>
+		<!-- Bootstrap core CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link href="css/index.css" rel="stylesheet">
+
+		<script type="text/javascript" src="webjars/jquery/3.3.1-1/jquery.js"></script>
+	</head>
+
+	<body class="text-center">
+		<!-- 登录 form -->
+		<form class="form-signin" action="/" METHOD="post" th:action="@{/loginUser}" id="loginform">
+			<img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal">经销商平台</h1>
+			<label class="sr-only">用户名</label>
+			<input type="text" id="username" name="username" class="form-control" placeholder="用户名" required="" autofocus="">
+			<!--判断-->
+			<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+			<label class="sr-only">密 码</label>
+			<input type="password" id="pas" name="password" class="form-control" placeholder="密码" required="">
+			<div class="checkbox mb-3">
+				<label>
+		  			<input type="checkbox" value="remember-me"> 记住我
+				</label>
+				<a class="btn btn-sm">注  册</a>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" id="sub" type="button">登  录</button>
+			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+			<a class="btn btn-sm">中文</a>
+			<a class="btn btn-sm">English</a>
+		</form>
+
+
+		<!-- 注册form -->
+		<form class="form-register" action="/" METHOD="post" id="registerform">
+			<img class="mb-4" src="/img/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal">经销商平台</h1>
+			<label class="sr-only">用户名</label>
+			<input type="text" name="reg_username" class="form-control" placeholder="用户名" required="" autofocus="">
+			<!--判断-->
+			<p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+			<label class="sr-only">密 码</label>
+			<input type="password" name="reg_password" class="form-control" placeholder="密码" required="">
+
+			<label class="sr-only">昵 称</label>
+			<input type="text" name="reg_anothername" class="form-control" placeholder="昵 称" required="" autofocus="">
+
+			<input type="tel" name="reg_anothername" class="form-control" placeholder="电 话" required="" autofocus="">
+
+			<input type="tel" name="reg_anothername" class="form-control" placeholder="电 话" required="" autofocus="">
+
+			<div class="checkbox mb-3">
+
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" id="sub" type="button">注  册</button>
+
+		</form>
+
+	</body>
+
+	<script type="text/javascript">
+		$(function(){
+
+            $("#sub").click(function(){
+                console.log("button......2");
+                // 就是会把整个表单，作为一个ajax来提交，
+               // $("#myform").ajaxSubmit();
+            });
+
+            $('#sub').bind("click", function(){
+                console.log("  bind");
+                //但如果form表单中数据很多时，不可能一一列出，只需要用   $('#yourformid').serialize()就可以了
+                var x =  $('#loginform').serialize();
+                var name = $("[name='username']");
+                var val = $("[name='username']").attr("placeholder","shuru中");
+                var x =  $('#loginform').serialize();
+            });
+
+            $('#sub').on('click', function(){
+                var form = new FormData();
+                form.append("username", $('#username').val());
+                form.append("password",$('#pas').val());
+
+                $.ajax({
+                    url:"/user/loginUser",
+                    type:"post",
+                    data:form,
+                    processData:false,
+                    contentType:false,
+                    success:function(data){
+                        var token = data.object.token;
+                        window.location.href='main.html?token='+token;
+                    },
+                    error:function (result) {
+                        //window.location.href='index.html';
+                    }
+                });
+                //$("#myform").clearForm();//清除表单元素
+                    //resetForm: false //禁止重置表单
+            });
+		})
+
+
+	</script>
+
+</html>
